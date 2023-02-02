@@ -25,7 +25,7 @@ async fn main() {
     println!("{:?}", res.clone());
 
 
-    let quotes: Root = match serde_json::from_str(res.clone().as_ref()) {
+    let quotes: Rooty = match serde_json::from_str(res.clone().as_ref()) {
         Ok(ok) => ok,
         Err(e) => panic!("{}", res)
     };
