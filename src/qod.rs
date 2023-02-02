@@ -10,3 +10,24 @@ pub struct Error {
 pub struct Root {
     pub error: Error,
 }
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Quote {
+    pub author: String,
+    pub quote: String,
+    pub tags: Vec<String>,
+    pub id: String,
+    pub image: String,
+    pub length: i64,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Contents {
+    pub quotes: Vec<Quote>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Rooty {
+    pub success: String,
+    pub contents: Contents,
+}
