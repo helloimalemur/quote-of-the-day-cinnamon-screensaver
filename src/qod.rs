@@ -1,17 +1,12 @@
-struct QOD {
-    pub author: String,
-    pub quote: String,
-    pub tags: Vec<String>,
-    pub id: String,
-    pub image: String,
-    pub length: i64,
+use serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Error {
+    pub code: i64,
+    pub message: String,
 }
 
-struct QODContents {
-    pub quotes: Vec<Struct>,
-}
-
-struct QODRoot {
-    pub success: String,
-    pub contents: Contents,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Root {
+    pub error: Error,
 }
