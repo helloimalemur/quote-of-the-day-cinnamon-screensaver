@@ -1,5 +1,6 @@
 //curl -X GET "https://quotes.rest/qod?language=en" -H  "accept: application/json"
 // https://turreta.com/2019/09/22/rust-convert-struct-instances-to-and-from-json/
+// https://jsonformatter.curiousconcept.com/#
 
 mod qod;
 use qod::*;
