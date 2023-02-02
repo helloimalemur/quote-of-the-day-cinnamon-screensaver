@@ -1,0 +1,29 @@
+{
+  "success": {
+    "total": 1
+  },
+  "contents": {
+    "quotes": [
+      {
+        "quote": "If I work as hard as I can, I wonder how much I can do in a day?",
+        "length": "64",
+        "author": "Ezra Taft Benson",
+        "tags": [
+          "inspire"
+        ],
+        "category": "inspire",
+        "language": "en",
+        "date": "2023-02-02",
+        "permalink": "https://theysaidso.com/quote/ezra-taft-benson-if-i-work-as-hard-as-i-can-i-wonder-how-much-i-can-do-in-a-day",
+        "id": "I6A4ptotLn_wOFHoq4jiuAeF",
+        "background": "https://theysaidso.com/img/qod/qod-inspire.jpg",
+        "title": "Inspiring Quote of the day"
+      }
+    ]
+  },
+  "baseurl": "https://theysaidso.com",
+  "copyright": {
+    "year": 2025,
+    "url": "https://theysaidso.com"
+  }
+}
