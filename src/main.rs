@@ -3,9 +3,9 @@
 // https://jsonformatter.curiousconcept.com/#
 
 mod qod;
-mod str;
+mod structs;
 
-use str::*;
+use structs::*;
 
 use tokio::*;
 use crate::qod::*;
