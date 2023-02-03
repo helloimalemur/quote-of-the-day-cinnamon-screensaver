@@ -3,14 +3,10 @@
 // https://jsonformatter.curiousconcept.com/#
 
 mod qod;
-
-use std::thread;
-use std::time::Duration;
 use tokio::*;
 use crate::qod::*;
-use serde::{Deserialize, Serialize};
-use reqwest::{Client, Response};
-use serde_json::json;
+use reqwest::Client;
+
 
 #[tokio::main]
 async fn main() {
@@ -32,7 +28,7 @@ async fn main() {
 
     let quotes: Root = match serde_json::from_str(res.clone().as_ref()) {
         Ok(ok) => ok,
-        Err(e) => json_failure()
+        Err(_e) => json_failure()
     };
 
     let quote_line = format!("{} ~{}", quotes.contents.quotes.get(0).unwrap().quote, quotes.contents.quotes.get(0).unwrap().author);
@@ -40,8 +36,6 @@ async fn main() {
     println!("{}", quote_line);
 
     process::Command::new("cinnamon-screensaver-command").args(vec!["-l","-m",quote_line.as_str()]).spawn().unwrap();
-
-    let mut message = String::new();
 }
 
 async fn request_failure() -> reqwest::Response {
