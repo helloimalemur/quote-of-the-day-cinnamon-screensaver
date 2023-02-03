@@ -4,6 +4,8 @@
 
 mod qod;
 
+use std::thread;
+use std::time::Duration;
 use tokio::*;
 use crate::qod::*;
 use serde::{Deserialize, Serialize};
@@ -21,13 +23,20 @@ async fn main() {
         .await
         .unwrap();
 
-    println!("{:?}", res.clone());
-
+    // print response
+    // println!("{:?}", res.clone());
 
     let quotes: Root = match serde_json::from_str(res.clone().as_ref()) {
         Ok(ok) => ok,
         Err(e) => panic!("{}", res)
     };
 
-    println!("{:?}", quotes);
+    let quote_line = format!("{} ~{}", quotes.contents.quotes.get(0).unwrap().quote, quotes.contents.quotes.get(0).unwrap().author);
+
+    println!("{}", quote_line);
+
+    process::Command::new("cinnamon-screensaver-command").args(vec!["-l","-m",quote_line.as_str()]).spawn().unwrap();
+    thread::sleep(Duration::new(4,0));
+    process::Command::new("cinnamon-unlock-desktop").spawn().unwrap();
+
 }
