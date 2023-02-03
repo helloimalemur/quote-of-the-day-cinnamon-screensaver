@@ -1,30 +1,41 @@
 use serde::{Deserialize, Serialize};
 
+
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Rooty {
+pub struct Root {
     pub success: Success,
     pub contents: Contents,
     pub baseurl: String,
-    pub copyright: Copyright
+    pub copyright: Copyright,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Success {
-    total: i32
+    pub total: i64,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Quotes {
-    quote: String,
-    author: String
-}
-#[derive(Serialize, Deserialize, Debug)]
 pub struct Contents {
-    pub quotes: Quotes
+    pub quotes: Vec<Qts>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Qts {
+    pub quote: String,
+    pub length: String,
+    pub author: String,
+    pub tags: Vec<String>,
+    pub category: String,
+    pub language: String,
+    pub date: String,
+    pub permalink: String,
+    pub id: String,
+    pub background: String,
+    pub title: String,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Copyright {
-    year: i32,
-    url: String
+    pub year: i64,
+    pub url: String,
 }
