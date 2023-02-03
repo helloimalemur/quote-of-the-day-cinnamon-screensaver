@@ -11,7 +11,6 @@ use serde::{Deserialize, Serialize};
 use reqwest::Response;
 use serde_json::json;
 
-
 #[tokio::main]
 async fn main() {
     let client = reqwest::Client::new();
