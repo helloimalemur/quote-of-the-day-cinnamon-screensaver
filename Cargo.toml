@@ -1,5 +1,5 @@
 [package]
-name = "qod-cinnamon-screensaver-message"
+name = "qod"
 version = "0.1.0"
 edition = "2021"
 
