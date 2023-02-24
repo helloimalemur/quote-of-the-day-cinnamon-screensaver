@@ -3,28 +3,23 @@
 // https://jsonformatter.curiousconcept.com/#
 
 mod qod;
+
+use std::time::Duration;
 use tokio::*;
 use crate::qod::*;
-use reqwest::Client;
 
 
 #[tokio::main]
 async fn main() {
     let client = reqwest::Client::new();
-    let res = match match client.get("https://quotes.rest/qod?language=en")
+    let res = client.get("https://quotes.rest/qod?language=en")
+        .timeout(Duration::new(3,0))
         .send()
-        .await {
-        Ok(x) => x,
-        Err(_) => request_failure().await,
-    }
+        .await
+        .expect("unable to fetch qod")
         .text()
-        .await {
-        Ok(x) => x,
-        Err(_) => failure().to_string(),
-    };
-
-    // print response
-    // println!("{:?}", res.clone());
+        .await
+        .expect("unable to parse text");
 
     let quotes: Root = match serde_json::from_str(res.clone().as_ref()) {
         Ok(ok) => ok,
@@ -38,11 +33,6 @@ async fn main() {
     process::Command::new("cinnamon-screensaver-command").args(vec!["-l","-m",quote_line.as_str()]).spawn().unwrap();
 }
 
-async fn request_failure() -> reqwest::Response {
-    let response = reqwest::Client::get(&Client::new(), "google.com").send().await.unwrap();
-    response
-}
-
 // if request fails we'll use this quote
 fn json_failure() -> Root {
     let data = r#"
@@ -53,9 +43,9 @@ fn json_failure() -> Root {
   "contents": {
     "quotes": [
       {
-        "quote": "If I work as hard as I can, I wonder how much I can do in a day?",
-        "length": "64",
-        "author": "Ezra Taft Benson",
+        "quote": "x,x",
+        "length": "3",
+        "author": "",
         "tags": [
           "inspire"
         ],
