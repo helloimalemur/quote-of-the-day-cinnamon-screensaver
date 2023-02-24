@@ -49,13 +49,13 @@ fn json_failure() -> Root {
         "tags": [
           "inspire"
         ],
-        "category": "inspire",
+        "category": "",
         "language": "en",
-        "date": "2023-02-02",
-        "permalink": "https://theysaidso.com/quote/ezra-taft-benson-if-i-work-as-hard-as-i-can-i-wonder-how-much-i-can-do-in-a-day",
-        "id": "I6A4ptotLn_wOFHoq4jiuAeF",
-        "background": "https://theysaidso.com/img/qod/qod-inspire.jpg",
-        "title": "Inspiring Quote of the day"
+        "date": "",
+        "permalink": "",
+        "id": "",
+        "background": "",
+        "title": ""
       }
     ]
   },
